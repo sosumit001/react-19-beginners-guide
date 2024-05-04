@@ -1,28 +1,32 @@
 {
-  "name": "react-19",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "as",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@types/react": "npm:types-react@beta",
-    "@types/react-dom": "npm:types-react-dom@beta",
     "react": "^19.0.0-beta-1beb73de0f-20240503",
     "react-dom": "^19.0.0-beta-1beb73de0f-20240503"
+  },
+  "devDependencies": {
+    "@types/react": "npm:types-react@beta",
+    "@types/react-dom": "npm:types-react-dom@beta",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
   },
   "overrides": {
     "@types/react": "npm:types-react@beta",
     "@types/react-dom": "npm:types-react-dom@beta"
-  },
-  "devDependencies": {
-    "parcel": "^2.12.0",
-    "process": "^0.11.10",
-    "typescript": "^5.4.5"
   }
 }
