@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useActionState, useEffect, useState } from "react"
 import UserTable from "./components/@ui/table"
+import Button from "./components/@ui/button"
 
 type TUser = {
 	id: number,
@@ -46,7 +47,7 @@ const App = () => {
 				type="text" 
 				name="name"
 				/>
-				<button type="submit" disabled={isPending}>Add User</button>
+				<Button/>
 			{
 				users?
 				<UserTable users={users} />
