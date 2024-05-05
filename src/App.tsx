@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useActionState, useEffect, useState } from "react"
+import React, { useEffect, useState, useTransition } from "react"
 import UserTable from "./components/@ui/table"
 
 type TUser = {
@@ -11,10 +11,11 @@ type TUser = {
 const App = () => {
 
 	const [users, setUsers] = useState<TUser[] | null>(null)
+	const [username, setUsername] = useState<string | null>(null) 
+	const [isPending, startTransition] = useTransition()
 
-	const [_error , submitAction, isPending] = useActionState(
-		async (_prevState: any, formData: FormData) => {
-			const username = formData.get("name")
+	const handleAddUser = () => {
+		startTransition(async  () => {
 			if (!username) {
 				alert("Username cannot be empty");
 				return;
@@ -23,9 +24,8 @@ const App = () => {
 				method: "POST",
 				body: JSON.stringify({name: username})
 			})
-		},
-		null
-	)
+		})
+	}
 	
 	const fetchUserData = async () => {
 		const response = await fetch('http://localhost:3001/users')
@@ -41,19 +41,20 @@ const App = () => {
 		<div>
 			<h1>React 19 : Actions</h1>
 			{/* User's Table */}
-			<form action={submitAction}>
+			<div>
 				<input 
 				type="text" 
 				name="name"
+				onChange={(e) => {setUsername(e.target.value)}}
 				/>
-				<button type="submit" disabled={isPending}>Add User</button>
+				<button type="submit" onClick={handleAddUser} disabled={isPending}>Add User</button>
 			{
 				users?
 				<UserTable users={users} />
 				:
 				<p>loading...</p>
 			}
-			</form>
+			</div>
 		</div>
 	);
 }
