@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useActionState, useEffect, useState, useTransition } from "react"
+import React, { useEffect, useState, useTransition } from "react"
 import UserTable from "./components/@ui/table"
 
 type TUser = {
