@@ -1,7 +1,7 @@
 1. Clone this repository:
 
 ```
-git clone https://github.com/sosumit001/webpack-javascript-template.git
+git clone git@github.com:sosumit001/react-19-beginners-guide.git
 ```
 
 2. Start Temp JSON Server with:
